@@ -10,20 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController {
     @Autowired
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
+
 
     @GetMapping
     public Iterable<Employee> getAllEmployee() {
-        return employeeRepository.findAll();
+        return employeeService.findAll();
     }
 
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+        return employeeService.save(employee);
     }
 }
 
