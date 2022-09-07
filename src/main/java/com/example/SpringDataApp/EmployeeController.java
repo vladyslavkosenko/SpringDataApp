@@ -13,7 +13,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-
     @GetMapping
     public Iterable<Employee> getAllEmployee() {
         return employeeService.findAll();
